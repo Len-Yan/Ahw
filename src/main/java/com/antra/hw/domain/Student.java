@@ -1,20 +1,31 @@
 package com.antra.hw.domain;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.ToString;
+import jakarta.persistence.*;
+import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
+@Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
+@Entity
+@Data
 public class Student {
 
-    private String name;
-    private int age;
-    private String gender;
-    private List<Teacher> teachers;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int studentId;
+
+    @Column
+    private String firstname;
+    @Column
+    private String lastname;
+
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
+    private List<Teacher> teachers = new ArrayList<>();
 
 
 }
