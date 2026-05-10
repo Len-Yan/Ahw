@@ -9,13 +9,14 @@ import java.util.List;
 @Setter
 @ToString
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table
+@Table(name = "teacher")
 public class Teacher {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int teacherId;
+    private Integer id;
 
     @Column
     private String firstname;
@@ -23,8 +24,7 @@ public class Teacher {
     private String lastname;
 
 
-    @ManyToOne
-    @JoinColumn(name = "foreign key")
-    private Student student;
+    @OneToMany(mappedBy = "teacher")
+    private List<StudentTeacher> studentTeachers;
 
 }

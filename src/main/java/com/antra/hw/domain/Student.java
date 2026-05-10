@@ -13,11 +13,12 @@ import java.util.List;
 @ToString
 @Entity
 @Data
+@Table(name = "student")
 public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int studentId;
+    private Integer id;
 
     @Column
     private String firstname;
@@ -25,7 +26,7 @@ public class Student {
     private String lastname;
 
     @OneToMany(mappedBy = "student", fetch = FetchType.LAZY)
-    private List<Teacher> teachers = new ArrayList<>();
+    private List<StudentTeacher> studentTeachers = new ArrayList<>();
 
 
 }

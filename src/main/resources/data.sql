@@ -1,3 +1,0 @@
-CREATE TABLE IF NOT EXISTS Student( studentId INT PRIMARY KEY, firstname VARCHAR(50), lastname VARCHAR(50));
-CREATE TABLE IF NOT EXISTS Teacher( teacherId INT PRIMARY KEY, firstname VARCHAR(50), lastname VARCHAR(50));
-CREATE TABLE IF NOT EXISTS Student_Teacher(studentId INT PRIMARY KEY, teacherId INT)

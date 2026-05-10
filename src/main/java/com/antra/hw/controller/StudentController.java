@@ -35,12 +35,12 @@ public class StudentController {
     @GetMapping("/{id}")
     public ResponseEntity<Student> getStudentbyId(@PathVariable int id){
 
-        return new ResponseEntity<>(studentService.getStudentbyId(id), HttpStatus.OK);
+        return new ResponseEntity<>(studentService.getStudentById(id), HttpStatus.OK);
     }
 
     @PostMapping("/")
     public ResponseEntity<Student> createStudentbyId(@RequestBody Student student){
-
+        //System.out.println(student.getFirstname());
         return new ResponseEntity<>(studentService.createStudent(student), HttpStatus.CREATED);
     }
 
@@ -54,6 +54,12 @@ public class StudentController {
     public ResponseEntity<Boolean> deleteStudentbyId(@PathVariable int id){
         studentService.deleteStudent(id);
         return new ResponseEntity<>(true, HttpStatus.OK);
+    }
+
+    //should in another controller, service
+    @PostMapping("/teacher")
+    public ResponseEntity<Teacher> createTeacher(@RequestBody Teacher teacher){
+        return new ResponseEntity<>(studentService.saveTeacher(teacher), HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}/teacher")
